@@ -41,16 +41,16 @@ document.querySelectorAll(".wa-btn").forEach((btn) => {
     const spots = btn.dataset.spots;
 
     const text = `
-Hello Superman Snorkeling! 👋
+Hello Superman Snorkeling! 
 
 I want to book this package:
 
-📌 Package: ${pack}
-💰 Price: ${price}
-🌊 Spot/Details: ${spots}
+Package: ${pack}
+Price: ${price}
+Spot/Details: ${spots}
 
-📅 Trip date:
-👥 Number of people:
+Trip date:
+Number of people:
 
 Thank you!
     `.trim();
