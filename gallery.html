@@ -1,0 +1,235 @@
+<!-- FILE: gallery.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gallery | Superman Snorkeling</title>
+  <meta name="description" content="Gallery foto trip snorkeling Superman Snorkeling di Nusa Lembongan, Bali." />
+
+  <!-- Google Font (optional, jika kamu sudah pakai di index.html, tetap aman) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (optional untuk icon) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Pakai file CSS yang sama -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Header sederhana (re-use style kamu) -->
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="index.html#home" aria-label="Superman Snorkeling">
+          <span class="logo" aria-hidden="true">
+            <img src="image/IMG_1567.PNG" alt="Superman Snorkeling Logo" width="40" height="40">
+          </span>
+          <span>
+            Superman <span class="brand-accent">Snorkeling</span>
+          </span>
+        </a>
+
+        <nav aria-label="Navigasi">
+          <ul>
+            <li><a href="index.html#packages">Packages</a></li>
+            <li><a href="index.html#gallery">Highlights</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="actions">
+          <a class="btn primary" href="index.html#contact">Booking Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero kecil untuk halaman gallery -->
+    <section class="gallery-page-hero">
+      <div class="container">
+        <div class="section-title" style="margin-bottom: 10px;">
+          <div>
+            <h2>Full Gallery</h2>
+            <p>Koleksi foto trip snorkeling & aktivitas di Nusa Lembongan. Klik foto untuk melihat lebih besar.</p>
+          </div>
+          <div class="gallery-page-actions">
+            <a class="btn" href="index.html#gallery"><i class="fa-solid fa-arrow-left"></i>&nbsp; Back to Home</a>
+            <a class="btn primary" href="https://wa.me/6282339536671" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>&nbsp; Chat WhatsApp</a>
+          </div>
+        </div>
+
+        <!-- Filter sederhana (optional) -->
+        <div class="gallery-filter">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="underwater">Underwater</button>
+          <button class="filter-btn" data-filter="boat">Boat</button>
+          <button class="filter-btn" data-filter="guest">Guests</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- GRID GALLERY -->
+    <section class="gallery-page">
+      <div class="container">
+        <div class="masonry" id="masonry">
+
+          <!-- GANTI / TAMBAH FOTO DI SINI -->
+          <!-- Tambahkan data-category agar filter berfungsi: underwater | boat | guest -->
+
+          <button class="masonry-item" data-category="guest" data-full="image/satu.jpeg" aria-label="Open image 1">
+            <img src="image/satu.jpeg" alt="Snorkeling photo 1" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="underwater" data-full="image/dua.jpeg" aria-label="Open image 2">
+            <img src="image/dua.jpeg" alt="Snorkeling photo 2" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="underwater" data-full="image/tiga.jpeg" aria-label="Open image 3">
+            <img src="image/tiga.jpeg" alt="Snorkeling photo 3" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="boat" data-full="image/empat.jpeg" aria-label="Open image 4">
+            <img src="image/empat.jpeg" alt="Snorkeling photo 4" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="guest" data-full="image/lima.jpeg" aria-label="Open image 5">
+            <img src="image/lima.jpeg" alt="Snorkeling photo 5" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="boat" data-full="image/enam.jpeg" aria-label="Open image 6">
+            <img src="image/enam.jpeg" alt="Snorkeling photo 6" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="underwater" data-full="image/tujuh.jpeg" aria-label="Open image 7">
+            <img src="image/tujuh.jpeg" alt="Snorkeling photo 7" loading="lazy">
+          </button>
+
+          <!-- contoh tambahan -->
+          <!--
+          <button class="masonry-item" data-category="guest" data-full="image/delapan.jpeg" aria-label="Open image 8">
+            <img src="image/delapan.jpeg" alt="Snorkeling photo 8" loading="lazy">
+          </button>
+          -->
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox Modal -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">×</button>
+    <button class="lightbox-nav prev" id="lightboxPrev" aria-label="Previous">‹</button>
+    <img class="lightbox-img" id="lightboxImg" alt="Preview" />
+    <button class="lightbox-nav next" id="lightboxNext" aria-label="Next">›</button>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-bottom" style="margin-top:0; border-top:none; padding-top:0;">
+        <p>© <span id="year"></span> Superman Snorkeling. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JS khusus untuk halaman ini -->
+  <script>
+    // Footer year
+    document.getElementById('year')?.textContent = new Date().getFullYear();
+
+    // ===== Filter sederhana =====
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const items = Array.from(document.querySelectorAll('.masonry-item'));
+
+    filterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        items.forEach(item => {
+          const cat = item.dataset.category;
+          item.style.display = (filter === 'all' || cat === filter) ? '' : 'none';
+        });
+      });
+    });
+
+    // ===== Lightbox + next/prev =====
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeBtn = document.getElementById('lightboxClose');
+    const prevBtn = document.getElementById('lightboxPrev');
+    const nextBtn = document.getElementById('lightboxNext');
+
+    // hanya item yang tampil (untuk navigasi)
+    function visibleItems(){
+      return items.filter(i => i.style.display !== 'none');
+    }
+
+    let currentIndex = 0;
+
+    function openLightbox(index){
+      const vis = visibleItems();
+      if(!vis.length) return;
+      currentIndex = Math.max(0, Math.min(index, vis.length - 1));
+      const src = vis[currentIndex].dataset.full;
+      lightboxImg.src = src;
+      lightbox.classList.add('open');
+      lightbox.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox(){
+      lightbox.classList.remove('open');
+      lightbox.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+      lightboxImg.src = '';
+    }
+
+    function next(){
+      const vis = visibleItems();
+      if(!vis.length) return;
+      currentIndex = (currentIndex + 1) % vis.length;
+      lightboxImg.src = vis[currentIndex].dataset.full;
+    }
+
+    function prev(){
+      const vis = visibleItems();
+      if(!vis.length) return;
+      currentIndex = (currentIndex - 1 + vis.length) % vis.length;
+      lightboxImg.src = vis[currentIndex].dataset.full;
+    }
+
+    // click items
+    items.forEach((item) => {
+      item.addEventListener('click', () => {
+        const vis = visibleItems();
+        const idx = vis.indexOf(item);
+        openLightbox(idx);
+      });
+    });
+
+    // controls
+    closeBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) closeLightbox();
+    });
+
+    nextBtn.addEventListener('click', (e) => { e.stopPropagation(); next(); });
+    prevBtn.addEventListener('click', (e) => { e.stopPropagation(); prev(); });
+
+    // keyboard
+    window.addEventListener('keydown', (e) => {
+      if(!lightbox.classList.contains('open')) return;
+      if(e.key === 'Escape') closeLightbox();
+      if(e.key === 'ArrowRight') next();
+      if(e.key === 'ArrowLeft') prev();
+    });
+  </script>
+</body>
+</html>
+
