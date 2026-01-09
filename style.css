@@ -486,6 +486,33 @@ section{padding: 55px 0}
   display:block;
 }
 
+.gallery-link{
+  font-weight: 900;
+  color: var(--primary-2);
+  font-size: 1rem;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding: 6px 0;
+  transition: .2s ease;
+}
+
+.gallery-link span{
+  transition: .2s ease;
+  font-size: 1.2rem;
+}
+
+.gallery-link:hover{
+  color: var(--text);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+.gallery-link:hover span{
+  transform: translateX(4px);
+}
+
+
 /* hover effect */
 .gallery .big img,
 .gallery .small img{
@@ -810,4 +837,67 @@ nav ul{
   margin-top: 18px;
   display:flex;
   justify-content:center;
+}
+
+
+.why {
+  padding: 80px 10%;
+  background: #fff;
+}
+
+.why h2 {
+  font-size: 48px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  color: #0b1b3f;
+}
+
+.why-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.why-box {
+  background: #f8fbff;
+  padding: 30px 20px;
+  border-radius: 18px;
+  text-align: center;
+  transition: 0.3s;
+  box-shadow: 0px 6px 18px rgba(0,0,0,0.08);
+}
+
+.why-box i {
+  font-size: 35px;
+  color: #2b86ff;
+  margin-bottom: 15px;
+}
+
+.why-box h3 {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.why-box p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.why-box:hover {
+  transform: translateY(-8px);
+  background: #eaf4ff;
+}
+
+@media (max-width: 992px) {
+  .why-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .why-container {
+    grid-template-columns: 1fr;
+  }
 }
