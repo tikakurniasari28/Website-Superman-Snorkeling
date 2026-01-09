@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Superman Snorkeling | Trip Snorkeling Nusa Lembongan</title>
+  <title>Superman Snorkeling </title>
   <meta name="description" content="Superman Snorkeling menyediakan trip snorkeling di Nusa Lembongan, Bali." />
   <link rel="stylesheet" href="style.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
@@ -55,7 +55,6 @@
       <div class="container">
         <div class="hero-grid">
           <div class="hero-text">
-            <div class="badge">Trip Snorkeling • Nusa Lembongan, Bali</div>
             <h1>Discover the Ocean Like Never Before With <span class="hero-accent">Superman Snorkeling</span>.</h1>
 
             <p class="lead">Welcome to Superman Snorkeling, where your ocean adventure begins. Whether you're visiting Bali for the first time or coming back for another escape, our snorkeling tours are designed to help you experience the sea in the most fun, safe, and unforgettable way.</p> 
@@ -64,7 +63,6 @@
            
             <div class="hero-cta">
               <a class="btn primary" href="packages.html">See Packages</a>
-              <a class="btn" href="https://wa.me/6282339536671" target="_blank">Chat WhatsApp</a>
             </div>
           </div>
 
@@ -77,11 +75,6 @@
               <img src="image/empat.jpeg" alt="Boat trip snorkeling experience">
             </div>
 
-            
-            <button class="slide-btn prev" aria-label="Previous slide">‹</button>
-            <button class="slide-btn next" aria-label="Next slide">›</button>
-
-            
             <div class="dots"></div>
           </div>
         </div>
@@ -92,10 +85,57 @@
 
 <!--TEMPAT-->
 
-    <div class="desc-place">
+    <!-- DESTINATIONS -->
+    <section id="destinations" class="section">
+      <div class="container">
+        
+        <div class="section-title">
+          <h2>Snorkeling Destinations</h2>
+        </div>
 
+        <div class="destinations-grid">
 
-    </div>
+          <!-- Card 1 -->
+          <div class="destination-card">
+            <img src="image/empat.jpeg" alt="Manta Point">
+            <div class="destination-content">
+              <h3>Manta Point</h3>
+              <p>
+                Famous for giant manta rays and crystal-clear waters. This spot offers
+                an unforgettable snorkeling experience where you can swim alongside these gentle creatures.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="destination-card">
+            <img src="image/tiga.jpeg" alt="Gamat Bay">
+            <div class="destination-content">
+              <h3>Gamat Bay</h3>
+              <p>
+                A hidden paradise with colorful coral reefs and tropical fish.
+                Perfect for snorkelers who want a peaceful and vibrant underwater adventure.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="destination-card">
+            <img src="image/sembilan.jpeg" alt="Crystal Bay">
+            <div class="destination-content">
+              <h3>Crystal Bay</h3>
+              <p>
+                Known for its calm waters and stunning visibility. Crystal Bay is ideal
+                for beginners and families, with a wide variety of marine life.
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
 
     <!--WHY CHOOSE US-->
     <section id="Why">
@@ -144,7 +184,7 @@
 
         <div class="gallery">
           <div class="big">
-            <img src="image/lima.jpeg" alt="Main snorkeling photo in Nusa Lembongan">
+            <img src="image/tiga.jpeg" alt="Main snorkeling photo in Nusa Lembongan">
           </div>
 
           <div class="gallery-smalls">
@@ -153,16 +193,17 @@
             </div>
 
             <div class="small">
-              <img src="image/tiga.jpeg" alt="Snorkeling photo 3">
+              <img src="image/empat.jpeg" alt="Snorkeling photo 7">
+            </div>
+
+            <div class="small">
+              <img src="image/lima.jpeg" alt="Snorkeling photo 7">
             </div>
 
             <div class="small">
               <img src="image/enam.jpeg" alt="Snorkeling photo 6">
             </div>
 
-            <div class="small">
-              <img src="image/tujuh.jpeg" alt="Snorkeling photo 7">
-            </div>
           </div>
 
           <div class="center-btn">
@@ -183,11 +224,28 @@
         <div class="section-title">
           <div>
             <h2>Contact</h2>
-            <p>For any inquiries, please contact us</p>
+            <div class="contact-subtitle">
+              <p>For any inquiries, please contact us</p>
+              <a href="https://wa.me/6282339536671" target="_blank" class="wa-icon">
+                 <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
           </div>
         </div>
 
         <div class="contact">
+          
+          <div class="card">
+            <h3>Form Message</h3>
+            <form id="contactForm">
+              <input name="name" placeholder="Name" required />
+              <input name="phone" placeholder="WhatsApp Number" required />
+              <textarea name="message" placeholder="Your message (for example: your preferred trip date and number of participants)" required></textarea>
+              <button class="btn primary" type="submit">Send to WhatsApp</button>
+            </form>
+            <p class="hint">WhatsApp will open automatically with your message pre-filled.</p>
+          </div>
+
           <div class="card">
             <h3>Detail Location</h3>
             <p class="muted"><b>Superman Snorkeling</b></p>
@@ -202,17 +260,6 @@
               referrerpolicy="no-referrer-when-downgrade">
               </iframe>
             </div>
-          </div>
-
-          <div class="card">
-            <h3>Form Message</h3>
-            <form id="contactForm">
-              <input name="name" placeholder="Name" required />
-              <input name="phone" placeholder="WhatsApp Number" required />
-              <textarea name="message" placeholder="Your message (for example: your preferred trip date and number of participants)" required></textarea>
-              <button class="btn primary" type="submit">Send to WhatsApp</button>
-            </form>
-            <p class="hint">WhatsApp will open automatically with your message pre-filled.</p>
           </div>
         </div>
       </div>
@@ -240,14 +287,14 @@
             <!-- MIDDLE: QUICK LINKS -->
             <div class="footer-links">
               <h4>Quick Links</h4>
-              <a href="#packages">Packages</a>
-              <a href="#gallery">Gallery</a>
+              <a href="packages.html">Packages</a>
+              <a href="gallery.html">Gallery</a>
               <a href="#contact">Contact</a>
             </div>
 
             <!-- RIGHT: CONTACT -->
             <div class="footer-contact">
-              <h4>Contact</h4>
+              <h4>Contact Us</h4>
 
               <a class="footer-item" href="https://wa.me/6282339536671" target="_blank" rel="noopener">
                 <span class="footer-icon"><i class="fa-brands fa-whatsapp"></i></span>

@@ -34,8 +34,9 @@
 
         <nav aria-label="Navigasi">
           <ul>
-            <li><a href="index.html#packages">Packages</a></li>
-            <li><a href="index.html#gallery">Highlights</a></li>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
             <li><a href="index.html#contact">Contact</a></li>
           </ul>
         </nav>
@@ -52,23 +53,8 @@
     <section class="gallery-page-hero">
       <div class="container">
         <div class="section-title" style="margin-bottom: 10px;">
-          <div>
-            <h2>Full Gallery</h2>
-            <p>Koleksi foto trip snorkeling & aktivitas di Nusa Lembongan. Klik foto untuk melihat lebih besar.</p>
-          </div>
-          <div class="gallery-page-actions">
-            <a class="btn" href="index.html#gallery"><i class="fa-solid fa-arrow-left"></i>&nbsp; Back to Home</a>
-            <a class="btn primary" href="https://wa.me/6282339536671" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i>&nbsp; Chat WhatsApp</a>
-          </div>
         </div>
 
-        <!-- Filter sederhana (optional) -->
-        <div class="gallery-filter">
-          <button class="filter-btn active" data-filter="all">All</button>
-          <button class="filter-btn" data-filter="underwater">Underwater</button>
-          <button class="filter-btn" data-filter="boat">Boat</button>
-          <button class="filter-btn" data-filter="guest">Guests</button>
-        </div>
       </div>
     </section>
 
@@ -107,6 +93,13 @@
           <button class="masonry-item" data-category="underwater" data-full="image/tujuh.jpeg" aria-label="Open image 7">
             <img src="image/tujuh.jpeg" alt="Snorkeling photo 7" loading="lazy">
           </button>
+          <button class="masonry-item" data-category="boat" data-full="image/empat.jpeg" aria-label="Open image 8">
+            <img src="image/delapan.jpeg" alt="Snorkeling photo 8" loading="lazy">
+          </button>
+
+          <button class="masonry-item" data-category="guest" data-full="image/lima.jpeg" aria-label="Open image 9">
+            <img src="image/sembilan.jpeg" alt="Snorkeling photo 9" loading="lazy">
+          </button>
 
 
         </div>
@@ -123,12 +116,60 @@
   </div>
 
   <footer class="footer">
-    <div class="container">
-      <div class="footer-bottom" style="margin-top:0; border-top:none; padding-top:0;">
-        <p>© <span id="year"></span> Superman Snorkeling. All rights reserved.</p>
-      </div>
-    </div>
+        <div class="container">
+
+          <div class="footer-grid">
+
+            <!-- LEFT: BRAND -->
+            <div class="footer-brand">
+              <div class="brand">
+                <span class="logo" aria-hidden="true">
+                  <img src="image/IMG_1567.PNG" alt="Superman Snorkeling Logo" width="40" height="40">
+                </span>
+                <span>Superman <span class="brand-accent">Snorkeling</span></span>
+              </div>
+              <p class="footer-desc">
+                Trip snorkeling on Nusa Lembongan, Bali. Safe, fun, and unforgettable ocean experiences.
+              </p>
+            </div>
+
+            <!-- MIDDLE: QUICK LINKS -->
+            <div class="footer-links">
+              <h4>Quick Links</h4>
+              <a href="packages.html">Packages</a>
+              <a href="gallery.html">Gallery</a>
+              <a href="#contact">Contact</a>
+            </div>
+
+            <!-- RIGHT: CONTACT -->
+            <div class="footer-contact">
+              <h4>Contact Us</h4>
+
+              <a class="footer-item" href="https://wa.me/6282339536671" target="_blank" rel="noopener">
+                <span class="footer-icon"><i class="fa-brands fa-whatsapp"></i></span>
+                <span><b>WhatsApp</b><br>0823-3953-6671</span>
+              </a>
+
+              <a class="footer-item" href="mailto:supermansnorkelingtrip@gmail.com">
+                <span class="footer-icon"><i class="fa-solid fa-envelope"></i></span>
+                <span><b>Email</b><br>supermansnorkelingtrip@gmail.com</span>
+              </a>
+
+              <a class="footer-item" href="https://www.instagram.com/superman_lembongan?igsh=b2J5N3ZzbThrOWJj&utm_source=qr" target="_blank" rel="noopener">
+                <span class="footer-icon"><i class="fa-brands fa-instagram"></i></span>
+                <span><b>Instagram</b><br>@superman_lembongan</span>
+              </a>
+
+            </div>
+          </div>
+
+          <div class="footer-bottom">
+            <p>© <span id="year"></span> Superman Snorkeling. All rights reserved.</p>
+          </div>
+
+        </div>
   </footer>
+
 
   <!-- JS khusus untuk halaman ini -->
   <script>
