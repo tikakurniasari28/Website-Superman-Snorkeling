@@ -16,6 +16,34 @@
 
 <body>
 
+  <header>
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="index.html#home" aria-label="Superman Snorkeling">
+          <span class="logo" aria-hidden="true">
+            <img src="image/IMG_1567.PNG" alt="Superman Snorkeling Logo" width="40" height="40">
+          </span>
+          <span>
+            Superman <span class="brand-accent">Snorkeling</span>
+          </span>
+        </a>
+
+        <nav aria-label="Navigasi">
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="packages.html">Packages</a></li>
+            <li><a href="gallery.html">Gallery</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="actions">
+          <a class="btn primary" href="index.html#contact">Booking Now</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
   <!-- PACKAGES -->
   <section id="packages">
     <div class="container">
@@ -180,6 +208,7 @@
 
   <dialog id="modal-spot3" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Package 3 Spot Snorkeling</h3>
       <p class="muted">Snorkeling Facilities</p>
       <ul>
@@ -188,12 +217,19 @@
         <li>Towel</li>
         <li>Free Pick Up Jungutbatu Area</li>
       </ul>
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
   <dialog id="modal-private" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Private Trip</h3>
       <p class="muted">Snorkeling Facilities</p>
       <ul>
@@ -203,12 +239,19 @@
         <li>Free to Request Your Spot</li>
         <li>Free Documentations</li>
       </ul>
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
   <dialog id="modal-special" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Superman Special Trip</h3>
       <p class="muted">Snorkeling Facilities</p>
       <ul>
@@ -218,12 +261,19 @@
         <li>Free Pick Up Jungutbatu Area</li>
         <li>Free Documentations</li>
       </ul>
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
   <dialog id="modal-trip1" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Simple Trip 1 (Snorkeling + Nusa Dua & Uluwatu Tour)</h3>
 
       <h4>Snorkeling Facilities</h4>
@@ -250,12 +300,19 @@
 
       <p class="note">Note: Not include hotel, lunch payment, and entry tickets.</p>
 
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
   <dialog id="modal-trip2" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Simple Trip 2 (Snorkeling + Ubud Tour)</h3>
 
       <h4>Snorkeling Facilities</h4>
@@ -288,12 +345,19 @@
 
       <p class="note">Note: Not include hotel, lunch payment, and entry tickets.</p>
 
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
   <dialog id="modal-trip3" class="modal">
     <div class="modal-box">
+      <button class="modal-x" type="button" aria-label="Close">&times;</button>
       <h3>Simple Trip 3 (Snorkeling + Kintamani Tour)</h3>
 
       <h4>Snorkeling Facilities</h4>
@@ -319,7 +383,13 @@
 
       <p class="note">Note: Not include hotel, lunch payment, and entry tickets.</p>
 
-      <button class="close-modal">Close</button>
+      <button class="modal-book wa-modal"
+        data-package="Private Trip"
+        data-price="Rp 2.999K"
+        data-spots="Private Boat + Free Request Spot">
+        Book via WhatsApp
+      </button>
+
     </div>
   </dialog>
 
@@ -329,52 +399,69 @@
        JS (MODAL + WHATSAPP)
   ========================= -->
   <script>
-    // === MODAL OPEN ===
-    document.querySelectorAll(".details-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const modalId = btn.dataset.modal;
-        document.getElementById(modalId).showModal();
-      });
-    });
-
-    // === MODAL CLOSE ===
-    document.querySelectorAll(".close-modal").forEach(btn => {
-      btn.addEventListener("click", () => {
-        btn.closest("dialog").close();
-      });
-    });
-
-    // close modal when click outside
-    document.querySelectorAll("dialog").forEach(dialog => {
-      dialog.addEventListener("click", (e) => {
-        if (e.target === dialog) dialog.close();
-      });
-    });
-
-
-    // === WHATSAPP BOOKING ===
-    const phoneNumber = "6282339536671";
-
-    document.querySelectorAll(".wa-btn").forEach(btn => {
-      document.querySelectorAll(".wa-modal").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const pkg = btn.dataset.package;
-        const price = btn.dataset.price;
-        const spots = btn.dataset.spots;
-
-        const message = `Hi Superman Snorkeling 👋%0A%0A` +
-                        `I want to book:%0A` +
-                        `📌 Package: ${pkg}%0A` +
-                        `💰 Price: ${price}%0A` +
-                        `🌊 Spots: ${spots}%0A%0A` +
-                        `Trip date: %0A` +
-                        `Number of participants: %0A`;
-
-        window.open(`https://wa.me/${phoneNumber}?text=${message}`, "_blank");
-      });
+  // === MODAL OPEN ===
+  document.querySelectorAll(".details-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const modalId = btn.dataset.modal;
+      document.getElementById(modalId).showModal();
     });
   });
-  </script>
 
-</body>
-</html>
+  // === MODAL CLOSE ===
+  document.querySelectorAll(".close-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      btn.closest("dialog").close();
+    });
+  });
+
+  // close modal when click outside
+  document.querySelectorAll("dialog").forEach(dialog => {
+    dialog.addEventListener("click", (e) => {
+      if (e.target === dialog) dialog.close();
+    });
+  });
+
+  // === WHATSAPP BOOKING ===
+  const phoneNumber = "6282339536671";
+
+  function openWhatsApp(btn){
+    const pkg = btn.dataset.package || "";
+    const price = btn.dataset.price || "";
+    const spots = btn.dataset.spots || "";
+
+    const message =
+      `Hi Superman Snorkeling 👋\n\n` +
+      `I want to book:\n` +
+      `Package: ${pkg}\n` +
+      `Price: ${price}\n` +
+      `Spots: ${spots}\n\n` +
+      `Trip date: \n` +
+      `Number of participants: `;
+
+    const url = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  }
+
+  // klik dari card (a.wa-btn)
+  document.querySelectorAll(".wa-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      openWhatsApp(btn);
+    });
+  });
+
+  // klik dari modal (button.wa-modal) kalau kamu pakai itu
+  document.querySelectorAll(".wa-modal").forEach(btn => {
+    btn.addEventListener("click", () => {
+      openWhatsApp(btn);
+    });
+  });
+
+
+  document.querySelectorAll(".modal-x").forEach(btn => {
+  btn.addEventListener("click", () => {
+    btn.closest("dialog").close();
+  });
+});
+
+</script>

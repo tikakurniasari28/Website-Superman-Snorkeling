@@ -14,6 +14,18 @@ mobileMenu?.querySelectorAll('a').forEach(a => {
   });
 });
 
+const cards = document.querySelectorAll(".destination-card");
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target); // animasi sekali aja
+      }
+    });
+  }, { threshold: 0.15 });
+
+  cards.forEach(card => observer.observe(card));
 // ===== Footer year =====
 document.getElementById('year').textContent = new Date().getFullYear();
 
@@ -31,34 +43,6 @@ form?.addEventListener('submit', (e) => {
   window.open(url, '_blank');
 });
 
-// ===== Package WhatsApp Message Auto Fill =====
-document.querySelectorAll(".wa-btn").forEach((btn) => {
-  btn.addEventListener("click", (e) => {
-    e.preventDefault();
-
-    const pack = btn.dataset.package;
-    const price = btn.dataset.price;
-    const spots = btn.dataset.spots;
-
-    const text = `
-Hello Superman Snorkeling! 
-
-I want to book this package:
-
-Package: ${pack}
-Price: ${price}
-Spot/Details: ${spots}
-
-Trip date:
-Number of people:
-
-Thank you!
-    `.trim();
-
-    const url = `https://wa.me/6282339536671?text=${encodeURIComponent(text)}`;
-    window.open(url, "_blank");
-  });
-});
 
 // ===== Hero Slider =====
 const slides = document.querySelectorAll(".hero-slider img");
@@ -80,6 +64,7 @@ slides.forEach((_, index) => {
     resetInterval();
   });
 });
+
 
 const dots = dotsContainer.querySelectorAll("button");
 
@@ -124,3 +109,7 @@ function resetInterval(){
 
 // mulai autoplay
 startInterval();
+
+
+ 
+
