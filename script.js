@@ -6,6 +6,16 @@ menuToggle?.addEventListener('click', () => {
   menuToggle.setAttribute('aria-expanded', String(isOpen));
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) header.classList.add("hide");
+    else header.classList.remove("hide");
+  });
+});
+
 // Close mobile menu after clicking a link
 mobileMenu?.querySelectorAll('a').forEach(a => {
   a.addEventListener('click', () => {
@@ -23,7 +33,7 @@ const cards = document.querySelectorAll(".destination-card");
         observer.unobserve(entry.target); // animasi sekali aja
       }
     });
-  }, { threshold: 0.15 });
+  }, { threshold: 0.20 });
 
   cards.forEach(card => observer.observe(card));
 // ===== Footer year =====
@@ -45,28 +55,29 @@ form?.addEventListener('submit', (e) => {
 
 
 // ===== Hero Slider =====
-const slides = document.querySelectorAll(".hero-slider img");
-const prevBtn = document.querySelector(".hero-slider .prev");
-const nextBtn = document.querySelector(".hero-slider .next");
-const dotsContainer = document.querySelector(".hero-slider .dots");
+document.addEventListener("DOMContentLoaded", () => {
+  const slides = document.querySelectorAll(".hero-slider img");
+  if (!slides.length) return;
 
-let currentSlide = 0;
-let slideInterval;
+  let index = 0;
 
-// buat dots otomatis
-slides.forEach((_, index) => {
-  const dot = document.createElement("button");
-  if(index === 0) dot.classList.add("active");
-  dotsContainer.appendChild(dot);
+  setInterval(() => {
+    slides[index].classList.remove("active");
+    index = (index + 1) % slides.length;
+    slides[index].classList.add("active");
+  }, 3500); // 3.5 detik
+});
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  if (!header) return;
 
-  dot.addEventListener("click", () => {
-    goToSlide(index);
-    resetInterval();
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) header.classList.add("hide");
+    else header.classList.remove("hide");
   });
 });
 
 
-const dots = dotsContainer.querySelectorAll("button");
 
 function goToSlide(index){
   slides[currentSlide].classList.remove("active");

@@ -25,7 +25,6 @@ body{
   line-height:1.6;
 }
 main{
-  border-radius: 20px;
   overflow: hidden;              /* penting biar blur ke-clip */
   background-clip: padding-box;  /* biar lebih rapi */
   -webkit-backdrop-filter: blur(10px); /* iOS */
@@ -41,56 +40,142 @@ a{color:inherit; text-decoration:none}
 
 @media (max-width: 768px){
   body{
-    background-position: center top; /* biar fokusnya ke atas */
+    background-position: center top; 
     background-attachment: scroll;   /* jangan fixed */
   }
 }
 @media (max-width: 768px){
   main{
-    margin: 12px;            /* biar nggak nempel tepi layar */
+    margin: 12px;            
     border-radius: 16px;
     background: rgba(255,255,255,0.82);
   }
 }
 
 
-/* ===== Header ===== */
+/* ===== Header (overlay di atas hero, tanpa card) ===== */
 header{
-  position: sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter: blur(14px);
-  background: rgba(247, 251, 255, .75);
-  border-bottom: 1px solid var(--stroke);
+  position: fixed;              /* overlay di atas gambar */
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  transition: transform .25s ease, opacity .25s ease;
+
+  background: transparent;      /* hilangin card */
+  border-bottom: 0;
+  box-shadow: none;
+  backdrop-filter: none;        /* optional: matikan blur */
 }
+
+header.hide{
+  transform: translateY(-120%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* nav layout tetap */
 .nav{
   display:flex;
-  align-items: center;
+  align-items:center;
   justify-content:space-between;
   gap:12px;
   padding:14px 0;
 }
+
+/* teks & link jadi putih biar kebaca di bg */
+header .brand,
+header nav a{
+  color: #fff;
+}
+
+/* hover/active */
+header nav a:hover{
+  color: rgba(255,255,255,.85);
+}
+
+/* brand tetap */
 .brand{
   display:flex;
   align-items:center;
   gap:10px;
   font-weight:800;
   letter-spacing:.2px;
+  text-decoration: none;
 }
-.logo {
+
+/* logo kamu tetap */
+.logo{
   width: 50px;
   height: 50px;
   border-radius: 12px;
   place-items: center;
-  overflow: hidden; 
+  overflow: hidden;
 }
-
-.logo img {
+.logo img{
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
+
+/* tombol Booking Now biar cocok di atas bg */
+header .btn.primary{
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+/* tombol menu icon */
+header .btn.icon{
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.25);
+  color: #fff;
+  backdrop-filter: blur(10px);
+}
+
+/* ===== Mobile menu (dropdown) ===== */
+.mobile-menu{
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+
+  display: none;                 /* default hidden */
+  margin: 10px 0 0;
+  padding: 12px;
+
+  background: rgba(2,6,23,.55);
+  border: 1px solid rgba(255,255,255,.18);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+
+  z-index: 9999;
+}
+
+.mobile-menu a{
+  display: block;
+  padding: 10px 8px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.mobile-menu a:hover{
+  background: rgba(255,255,255,.10);
+  border-radius: 12px;
+}
+
+/* class ini kamu aktifkan dari JS saat menu dibuka */
+.mobile-menu.show{
+  display: block;
+}
+
+/* ===== Biar hero nggak ketutup header fixed ===== */
+.hero.hero-bg{
+  padding-top: 160px; /* sesuaikan jika header lebih tinggi/rendah */
+}
+
 
 
 .actions{display:flex; align-items:center; gap:10px}
@@ -134,74 +219,37 @@ header{
 }
 
 
-/* ===== Hero ===== */
-.hero{padding: 70px 0 30px}
-.hero-grid{
-  display:grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 26px;
-  align-items:center;
-}
-.badge{
-  display:inline-flex; align-items:center; gap:8px;
-  padding: 8px 12px;
-  border-radius: 999px;
-  border:1px solid rgba(90,174,252,.35);
-  background: rgba(255,255,255,.7);
-  color: rgba(15,23,42,.75);
-  font-weight:700;
-  width:fit-content;
-}
-.badge.pill{border-color: var(--stroke)}
-.pill-row{margin-top:14px; display:flex; gap:10px; flex-wrap:wrap}
+/* =========================
+   HERO BACKGROUND SLIDER 
+   ========================= */
 
-h1{font-size: clamp(2rem, 3.8vw, 3.2rem); line-height:1.15; margin:14px 0 12px}
-.lead{font-size: 1.05rem; color: var(--muted); margin: 0 0 18px}
-.hero-cta{display:flex; flex-wrap:wrap; gap:10px; margin-top: 12px}
-.hero-card{
-  border: 1px solid var(--stroke);
-  background: var(--card);
-  border-radius: var(--radius);
-  box-shadow: var(--shadow);
-  padding: 18px;
-  position:relative;
-  overflow:hidden;
-}
-.hero-card h3{margin:0 0 6px}
-.hero-card p{margin:0; color: var(--muted)}
-.hero-card:before{
-  content:"";
-  position:absolute; inset:-80px -80px auto auto;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle at 30% 30%, rgba(90,174,252,.55), transparent 60%);
-  filter: blur(2px);
-}
-.stats{display:grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 14px}
-.stat{
-  border:1px solid var(--stroke);
-  background: rgba(255,255,255,.75);
-  border-radius: 16px;
-  padding: 12px;
-}
-.stat b{font-size: 1.05rem}
-.stat span{display:block; color: var(--muted); font-weight:600; font-size:.9rem}
-
-.hero-slider{
+.hero.hero-bg{
   position: relative;
-  width: 100%;
-  height: 520px;
-  border-radius: 26px;
+  padding: 110px 0 90px;   /* tinggi area hero */
+  border-radius: 0;
   overflow: hidden;
-  background: #fff; /* fallback */
 }
 
-.hero-slider .slides{
+/* background slider full screen di hero */
+.hero.hero-bg .hero-bg-slider{
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* slides full */
+.hero.hero-bg .hero-slider .slides{
   position: relative;
   width: 100%;
   height: 100%;
 }
 
-.hero-slider img{
+/* gambar cover */
+.hero.hero-bg .hero-slider img{
   position: absolute;
   inset: 0;
   width: 100%;
@@ -209,15 +257,80 @@ h1{font-size: clamp(2rem, 3.8vw, 3.2rem); line-height:1.15; margin:14px 0 12px}
   object-fit: cover;
   opacity: 0;
   transition: opacity .6s ease;
+  border-radius: 0;
 }
 
-.hero-slider img.active{
+.hero.hero-bg .hero-slider img.active{
   opacity: 1;
 }
 
-.hero-slider img:first-child{
-  opacity: 1; /* fallback */
+/* fallback kalau JS belum jalan */
+.hero.hero-bg .hero-slider img:first-child{
+  opacity: 1;
 }
+
+/* overlay: PERHATIKAN class kamu typo: hero-ovelay
+   CSS ini cover dua-duanya: hero-ovelay & hero-overlay */
+.hero.hero-bg .hero-ovelay,
+.hero.hero-bg .hero-overlay{
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(2,6,23,.75) 0%,
+    rgba(2,6,23,.45) 55%,
+    rgba(2,6,23,.20) 100%
+  );
+  z-index: 1;
+}
+
+/* konten di atas background */
+.hero.hero-bg .hero-content{
+  position: relative;
+  z-index: 2;
+}
+
+/* text styling biar kebaca */
+.hero.hero-bg .hero-text{
+  max-width: 800px;
+  color: #fff;
+}
+
+.hero.hero-bg .hero-text h1{
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  line-height: 1.15;
+  margin: 0 0 14px;
+  color: #fff;
+}
+
+.hero.hero-bg .hero-text h1 span{
+  color: #5AAEFC; /* opsional, kalau mau highlight */
+}
+
+.hero.hero-bg .hero-text .lead{
+  color: rgba(255,255,255,.86);
+  margin: 0 0 14px;
+  font-size: 1.05rem;
+}
+
+/* button tetap kebaca di background */
+.hero.hero-bg .hero-cta{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+/* responsive */
+@media (max-width: 900px){
+  .hero.hero-bg{
+    padding: 90px 0 70px;
+  }
+  .hero.hero-bg .hero-text{
+    max-width: 100%;
+  }
+}
+
 
 
 /* ===== Sections ===== */
