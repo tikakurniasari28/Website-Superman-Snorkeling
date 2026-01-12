@@ -94,6 +94,20 @@ header nav a:hover{
   color: rgba(255,255,255,.85);
 }
 
+header .nav{
+  width: 100%;
+  min-width: 0;
+}
+
+header nav ul{
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
 /* brand tetap */
 .brand{
   display:flex;
@@ -176,7 +190,56 @@ header .btn.icon{
   padding-top: 160px; /* sesuaikan jika header lebih tinggi/rendah */
 }
 
+@media (max-width: 900px){
+  /* rapetin padding header */
+  header .nav{
+    padding: 10px 0;
+    gap: 10px;
+  }
 
+  /* brand jangan bikin overflow */
+  header .brand{
+    min-width: 0;
+  }
+  header .brand span{
+    white-space: nowrap;
+  }
+
+  /* sembunyikan menu desktop */
+  header nav{
+    display: none;
+  }
+
+  /* tombol booking bisa disembunyikan biar muat (opsional) */
+  header .actions .btn.primary{
+    display: none;
+  }
+
+  /* menu icon tampil */
+  header .menu-toggle{
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* mobile menu full lebar container dan rapi */
+  header .mobile-menu{
+    display: none;
+    width: 100%;
+    margin-top: 10px;
+    padding: 12px;
+    border-radius: 16px;
+  }
+
+  header .mobile-menu.show{
+    display: block;
+  }
+
+  header .mobile-menu a{
+    display: block;
+    padding: 12px 10px;
+  }
+}
 
 .actions{display:flex; align-items:center; gap:10px}
 .btn{
@@ -205,8 +268,6 @@ header .btn.icon{
 .mobile-menu a{
   display:block;
   padding: 12px 12px;
-  border:1px solid var(--stroke);
-  border-radius: 14px;
   margin-top:10px;
   background: rgba(255,255,255,.75);
   font-weight:700;
@@ -381,79 +442,83 @@ section{padding: 55px 0}
 .card h3{margin: 6px 0 6px}
 .card p{margin:0; color: var(--muted)}
 
+/* =========================
+   DESTINATIONS (sesuai HTML: .destination + dest-1/dest-2)
+========================= */
 
-.hero-text{
-  max-width: 640px;
+.destination{
+  display: grid;
+  gap: 40px;
+  margin-top: 40px;
 }
 
+/* base card */
+.destination-card{
+  display: grid;
+  gap: 28px;
+  align-items: start;
+}
 
-.slide-btn{
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 46px;
-  height: 46px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,.45);
-  background: rgba(255,255,255,.65);
-  font-size: 30px;
-  font-weight: 800;
-  cursor: pointer;
+/* gambar */
+.destination-card img{
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+/* text */
+.destination-content{
   display: flex;
-  align-items: center;
-  justify-content: center;
-  backdrop-filter: blur(10px);
-  transition: 0.2s ease;
-  z-index: 10; 
-  line-height: 1;
-  padding: 0;
+  flex-direction: column;
+  justify-content: flex-start;
 }
 
-.slide-btn.prev{
-  left: 16px;
+.destination-content h3{
+  margin: 0 0 12px;
+  font-size: 1.4rem;
+  font-weight: 900;
 }
 
-.slide-btn.next{
-  right: 16px;
+.destination-content p{
+  margin: 0;
+  line-height: 1.7;
+  color: var(--muted);
+  font-weight: 600;
 }
 
-.slide-btn:hover{
-  background: rgba(255,255,255,.95);
-  transform: translateY(-50%) scale(1.06);
-}
-/* ===== Dots ===== */
-.dots{
-  position:absolute;
-  bottom: 14px;
-  left: 0;
-  right: 0;
-  display:flex;
-  justify-content:center;
-  gap:8px;
-  z-index: 10;
+/* ===== Layout 1: gambar kiri, teks kanan ===== */
+.destination-card.dest-1{
+  grid-template-columns: 360px 1fr;
 }
 
-.dots button{
-  width: 10px;
-  height: 10px;
-  border-radius: 999px;
-  border: 0;
-  background: rgba(255,255,255,.65);
-  cursor:pointer;
-  transition:.2s ease;
+.destination-card.dest-1 img{ grid-column: 1; }
+.destination-card.dest-1 .destination-content{ grid-column: 2; }
+
+/* ===== Layout 2: teks kiri, gambar kanan ===== */
+.destination-card.dest-2{
+  grid-template-columns: 1fr 360px;
 }
 
-.dots button.active{
-  width: 22px;
-  background: rgba(255,255,255,.95);
-}
+.destination-card.dest-2 .destination-content{ grid-column: 1; }
+.destination-card.dest-2 img{ grid-column: 2; }
 
+/* MOBILE: jadi 1 kolom */
+@media (max-width: 900px){
+  .destination-card.dest-1,
+  .destination-card.dest-2{
+    grid-template-columns: 1fr;
+  }
 
-@media (max-width: 920px){
-  .hero-slider{
-    height: 320px;
+  .destination-card.dest-1 img,
+  .destination-card.dest-2 img,
+  .destination-card.dest-1 .destination-content,
+  .destination-card.dest-2 .destination-content{
+    grid-column: auto;
   }
 }
+
+
 
 
 /* ===== Packages ===== */
@@ -494,8 +559,6 @@ section{padding: 55px 0}
   /* ini yang penting */
   max-width: calc(100% - 115px); 
 }
-
-
 
 .card.package .muted{
   margin: 0 0 14px;
@@ -772,28 +835,6 @@ section{padding: 55px 0}
    RESPONSIVE
 ========================= */
 @media(max-width: 920px){
-  .gallery{
-    grid-template-columns: 1fr;
-  }
-
-  .gallery .big{
-    height: 280px;
-  }
-
-  .gallery .small{
-    height: 180px;
-  }
-}
-
-@media(max-width: 520px){
-  .gallery-smalls{
-    grid-template-columns: 1fr;
-  }
-
-  .gallery .small{
-    height: 220px;
-  }
-}@media(max-width: 920px){
   .gallery{
     grid-template-columns: 1fr;
   }
@@ -1213,120 +1254,6 @@ nav ul{
 }
 
 
-/* =========================
-   DESTINATIONS SECTION
-========================= */
-
-.destinations-grid{
-  display: grid;
-  gap: 40px;
-  margin-top: 40px;
-}
-
-.destination-card{
-  display: grid;
-  grid-template-columns: 360px 1fr;
-  gap: 28px;
-  align-items: start;
-}
-
-
-/* IMAGE */
-.destination-card img{
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-/* TEXT */
-.destination-content h3{
-  margin: 0 0 12px;
-  font-size: 1.4rem;
-  font-weight: 900;
-}
-
-.destination-content{
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-}
-
-
-.destination-content p{
-  margin: 0;
-  line-height: 1.7;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-/* REVERSE (gambar kanan, teks kiri) */
-.destination-card.reverse{
-  grid-template-columns: 1fr 360px;
-}
-
-.destination-card.reverse img{
-  grid-column: 2;
-}
-
-.destination-card.reverse .destination-content{
-  grid-column: 1;
-}
-
-/* MOBILE */
-@media (max-width: 900px){
-  .destination-card,
-  .destination-card.reverse{
-    grid-template-columns: 1fr;
-  }
-
-  .destination-card img{
-    height: 220px;
-  }
-}
 
 
 
-/* =========================
-   DESTINATIONS ANIMATION
-========================= */
-.destination-card{
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-
-.destination-card.is-visible{
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* slide direction: odd from left, even from right */
-.destination-card.is-visible:nth-child(odd){
-  animation: slideInLeft .6s ease both;
-}
-
-.destination-card.is-visible:nth-child(even){
-  animation: slideInRight .6s ease both;
-}
-
-@keyframes slideInLeft{
-  from{ transform: translateX(-24px); opacity: 0; }
-  to{ transform: translateX(0); opacity: 1; }
-}
-
-@keyframes slideInRight{
-  from{ transform: translateX(24px); opacity: 0; }
-  to{ transform: translateX(0); opacity: 1; }
-}
-
-/* accessibility */
-@media (prefers-reduced-motion: reduce){
-  .destination-card,
-  .destination-card.is-visible{
-    opacity: 1;
-    transform: none;
-    animation: none;
-    transition: none;
-  }
-}
