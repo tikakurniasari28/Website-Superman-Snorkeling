@@ -124,3 +124,18 @@ startInterval();
 
  
 
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll(".destination-card");
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        io.unobserve(entry.target); // animasi sekali aja
+      }
+    });
+  }, { threshold: 0.20 });
+
+  items.forEach((el) => io.observe(el));
+});

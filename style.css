@@ -46,26 +46,25 @@ a{color:inherit; text-decoration:none}
 }
 @media (max-width: 768px){
   main{
-    margin: 12px;            
-    border-radius: 16px;
+    margin: 0;            
+    border-radius: ;
     background: rgba(255,255,255,0.82);
   }
 }
 
 
-/* ===== Header (overlay di atas hero, tanpa card) ===== */
 header{
-  position: fixed;              /* overlay di atas gambar */
+  position: fixed;             
   top: 0;
   left: 0;
   width: 100%;
   z-index: 9999;
   transition: transform .25s ease, opacity .25s ease;
 
-  background: transparent;      /* hilangin card */
+  background: transparent;     
   border-bottom: 0;
   box-shadow: none;
-  backdrop-filter: none;        /* optional: matikan blur */
+  backdrop-filter: none;        
 }
 
 header.hide{
@@ -74,7 +73,7 @@ header.hide{
   pointer-events: none;
 }
 
-/* nav layout tetap */
+
 .nav{
   display:flex;
   align-items:center;
@@ -83,7 +82,7 @@ header.hide{
   padding:14px 0;
 }
 
-/* teks & link jadi putih biar kebaca di bg */
+
 header .brand,
 header nav a{
   color: #fff;
@@ -108,7 +107,6 @@ header nav ul{
   list-style: none;
 }
 
-/* brand tetap */
 .brand{
   display:flex;
   align-items:center;
@@ -118,7 +116,6 @@ header nav ul{
   text-decoration: none;
 }
 
-/* logo kamu tetap */
 .logo{
   width: 50px;
   height: 50px;
@@ -133,7 +130,6 @@ header nav ul{
   display: block;
 }
 
-/* tombol Booking Now biar cocok di atas bg */
 header .btn.primary{
   background: rgba(255,255,255,.14);
   border: 1px solid rgba(255,255,255,.25);
@@ -141,7 +137,6 @@ header .btn.primary{
   backdrop-filter: blur(10px);
 }
 
-/* tombol menu icon */
 header .btn.icon{
   background: rgba(255,255,255,.14);
   border: 1px solid rgba(255,255,255,.25);
@@ -149,14 +144,14 @@ header .btn.icon{
   backdrop-filter: blur(10px);
 }
 
-/* ===== Mobile menu (dropdown) ===== */
+
 .mobile-menu{
   position: absolute;
   top: 100%;
   right: 0;
   left: 0;
 
-  display: none;                 /* default hidden */
+  display: none;                
   margin: 10px 0 0;
   padding: 12px;
 
@@ -180,24 +175,23 @@ header .btn.icon{
   border-radius: 12px;
 }
 
-/* class ini kamu aktifkan dari JS saat menu dibuka */
+
 .mobile-menu.show{
   display: block;
 }
 
-/* ===== Biar hero nggak ketutup header fixed ===== */
+
 .hero.hero-bg{
-  padding-top: 160px; /* sesuaikan jika header lebih tinggi/rendah */
+  padding-top: 160px; 
 }
 
 @media (max-width: 900px){
-  /* rapetin padding header */
   header .nav{
     padding: 10px 0;
     gap: 10px;
   }
 
-  /* brand jangan bikin overflow */
+  
   header .brand{
     min-width: 0;
   }
@@ -205,30 +199,26 @@ header .btn.icon{
     white-space: nowrap;
   }
 
-  /* sembunyikan menu desktop */
+ 
   header nav{
     display: none;
   }
 
-  /* tombol booking bisa disembunyikan biar muat (opsional) */
   header .actions .btn.primary{
     display: none;
   }
 
-  /* menu icon tampil */
   header .menu-toggle{
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  /* mobile menu full lebar container dan rapi */
   header .mobile-menu{
     display: none;
     width: 100%;
     margin-top: 10px;
     padding: 12px;
-    border-radius: 16px;
   }
 
   header .mobile-menu.show{
@@ -286,7 +276,7 @@ header .btn.icon{
 
 .hero.hero-bg{
   position: relative;
-  padding: 110px 0 90px;   /* tinggi area hero */
+  padding: 110px 0 90px;   
   border-radius: 0;
   overflow: hidden;
 }
@@ -443,7 +433,7 @@ section{padding: 55px 0}
 .card p{margin:0; color: var(--muted)}
 
 /* =========================
-   DESTINATIONS (sesuai HTML: .destination + dest-1/dest-2)
+   DESTINATIONS 
 ========================= */
 
 .destination{
@@ -517,6 +507,47 @@ section{padding: 55px 0}
     grid-column: auto;
   }
 }
+/* awalnya disembunyikan */
+.destination-card{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity .6s ease, transform .6s ease;
+  will-change: transform, opacity;
+}
+
+/* saat terlihat */
+.destination-card.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ganjil dari kiri, genap dari kanan */
+.destination-card.is-visible:nth-child(odd){
+  animation: slideInLeft .6s ease both;
+}
+.destination-card.is-visible:nth-child(even){
+  animation: slideInRight .6s ease both;
+}
+
+@keyframes slideInLeft{
+  from{ transform: translateX(-24px); opacity: 0; }
+  to{ transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInRight{
+  from{ transform: translateX(24px); opacity: 0; }
+  to{ transform: translateX(0); opacity: 1; }
+}
+
+/* accessibility */
+@media (prefers-reduced-motion: reduce){
+  .destination-card,
+  .destination-card.is-visible{
+    opacity: 1;
+    transform: none;
+    animation: none;
+    transition: none;
+  }
+}
 
 
 
@@ -529,6 +560,45 @@ section{padding: 55px 0}
   gap: 18px;
   align-items: stretch;
 }
+
+.page-packages header{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+
+  background: rgba(247, 251, 255, 0.95);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--stroke);
+}
+
+/* warna teks & link */
+.page-packages header,
+.page-packages header a{
+  color: #0f172a; /* gelap, kebaca */
+}
+
+/* hover link */
+.page-packages header nav a:hover{
+  color: var(--primary-2);
+}
+
+/* logo text */
+.page-packages .brand{
+  color: #0f172a;
+}
+
+/* tombol Booking Now */
+.page-packages header .btn.primary{
+  background: var(--primary-2);
+  color: #fff;
+  border: none;
+}
+
+/* icon menu (kalau mobile) */
+.page-packages header .menu-toggle{
+  color: #0f172a;
+}
+
 
 .card.package{
   border: 1px solid rgba(15,23,42,.08); 

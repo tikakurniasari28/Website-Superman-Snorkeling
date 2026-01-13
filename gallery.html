@@ -18,12 +18,13 @@
   <!-- Pakai file CSS yang sama -->
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
+
+<body class="page-packages">
   <!-- Header sederhana (re-use style kamu) -->
-  <header>
+<header>
     <div class="container">
       <div class="nav">
-        <a class="brand" href="index.html#home" aria-label="Superman Snorkeling">
+        <a class="brand" href="index.html" aria-label="Superman Snorkeling">
           <span class="logo" aria-hidden="true">
             <img src="image/IMG_1567.PNG" alt="Superman Snorkeling Logo" width="40" height="40">
           </span>
@@ -34,16 +35,26 @@
 
         <nav aria-label="Navigasi">
           <ul>
-            <li><a href="index.html">Home</a></li>
             <li><a href="packages.html">Packages</a></li>
             <li><a href="gallery.html">Gallery</a></li>
-            <li><a href="index.html#contact">Contact</a></li>
+            <li><a href="index.html#contact">Contact Us</a></li>
+            <li><a href="index.html#testimoni">Customer Say</a></li>
           </ul>
         </nav>
 
         <div class="actions">
           <a class="btn primary" href="index.html#contact">Booking Now</a>
+          <button class="btn icon menu-toggle" id="menuToggle" aria-label="Buka menu" aria-expanded="false">
+            <span aria-hidden="true">☰</span>
+          </button>
         </div>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu">
+        <a href="packages.html">Packages</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="index.html">Contact Us</a>
+        <a href="index.html">Customer Say</a>
       </div>
     </div>
   </header>
