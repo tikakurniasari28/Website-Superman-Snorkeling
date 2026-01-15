@@ -552,6 +552,45 @@ section{padding: 55px 0}
 
 
 
+/* wrapper */
+.testi{
+  margin-top: 40px;
+}
+
+/* default: HP (1 kolom, rata tengah) */
+.testi .small{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  justify-items: center;     /* bikin item di tengah */
+}
+
+/* gambar */
+.testi .small img{
+  width: min(420px, 90%);    /* max 420px, tapi tetap responsif */
+  height: auto;              /* biar ga kepotong */
+  object-fit: contain;       /* aman untuk landscape */
+  border-radius: 20px;
+  display: block;
+}
+
+/* laptop ke atas: berjejer kesamping */
+@media (min-width: 992px){
+  .testi .small{
+    grid-template-columns: repeat(5, 1fr); /* karena kamu ada 5 gambar */
+    align-items: center;
+    justify-items: center;
+  }
+
+  .testi .small img{
+    width: 100%;
+    max-width: 220px;        /* biar seragam */
+  }
+}
+
+
+
+
 /* ===== Packages ===== */
 
 .packages{
